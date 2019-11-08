@@ -1,31 +1,15 @@
 <?php
-$array = [10,80,34,20,90,-13,43,-91,43,-12];
-$length = count($array);
-echo 'Unsorted array: '.implode(',', $array);
-echo '<br>';
+$array = [10,80,20,54,-56,-12,5,6,-60];
+
 $temp = 0;
-function findThirdLargest($array) {
-	$swapped = false;
-	for($i = 0; $i<=count($array)-1; $i++) {
-		if(array_key_exists($i+1, $array)) {			
-			if($array[$i] > $array[$i+1]) {
-				$temp = $array[$i];
-				$array[$i] = $array[$i+1];
-				$array[$i+1] = $temp;
-				$swapped = true;
-			}
+for($i=0; $i<count($array)-1;$i++) {
+	for($j=0;$j<count($array)-1;$j++) {
+		if ($array[$i] > $array[$j]) {
+			$temp = $array[$i];
+			$array[$i] = $array[$j];
+			$array[$j] = $temp;
 		}
 	}
-	if($swapped == true) {
-		return findThirdLargest($array);
-	} else {
-		return $array;
-	}
 }
-
-$newArray = findThirdLargest($array);
-echo 'Sorted array: '.implode(',', $newArray);
-echo '<br>';
-echo 'Largest number is '.$newArray[$length-1];
-echo '<br>';
+print_r($array[0]);
 ?>
