@@ -1,15 +1,20 @@
-<script type="text/javascript">
-var number = prompt("Enter no");
-var temp = 0;
-for (var i=2; i < number ; i++) { 
-	if (number%i == 0) {
-		temp = 1;
-		break;
+<?php
+function primeCheck($number) {
+	if($number == 1) {
+		return false;
 	}
+	for ($i=2; $i <= $number/2 ; $i++) { 
+		if ($number % $i == 0) {
+			return false;
+		}
+	}
+	return true;
 }
-if (temp == 0) {
-	alert("It is a prime number");
+
+$flag = primeCheck(1);
+if($flag == true) {
+	echo "Prime";
 } else {
-	alert("It is not a prime number");
-}	
-</script>
+	echo "not";
+}
+?>
